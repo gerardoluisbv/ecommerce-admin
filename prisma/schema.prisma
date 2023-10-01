@@ -118,7 +118,7 @@ model Image {
 
 model Order {
   id String @id @default(uuid())
-  storeId String
+  storeId String // Foreign Key to Store
   store Store @relation("StoreToOrder", fields: [storeId], references: [id])
   orderItems OrderItem[]
   isPaid Boolean @default(false)
@@ -130,11 +130,12 @@ model Order {
   @@index([storeId])
 }
 
+// Intermediary for a many-to-many relationship
 model OrderItem {
   id String @id @default(uuid())
-  orderId String
+  orderId String // Foreign Key to Order
   order Order @relation(fields: [orderId], references: [id])
-  productId String
+  productId String // Foreign Key to Product
   product Product @relation(fields: [productId], references: [id])
 
   @@index([orderId])

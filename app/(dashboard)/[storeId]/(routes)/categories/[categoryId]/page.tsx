@@ -1,6 +1,5 @@
 import prismadb from "@/lib/prismadb"
 import CategoryForm from "../components/category-form"
-import { Billboard } from '@prisma/client';
 
 const CategoryPage = async ({
     params
